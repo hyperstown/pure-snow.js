@@ -1,5 +1,9 @@
+let snowflakesCount = 400;
 
-let total = 400;
+if (typeof total !== 'undefined'){
+    snowflakesCount = total;
+}
+
 
 // This function allows you to turn on and off the snow
 function toggleSnow() {
@@ -97,12 +101,12 @@ function spawnSnowCSS(snowDensity = 200){
         `
         //console.log(rule);
     }
-    
+
     addCss(rule);
 }
 
 // Load the rules and execute after the DOM loads
 window.onload = function() {
-    spawnSnowCSS(total);
-    spawnSnowClass(total);
+    spawnSnowCSS(snowflakesCount);
+    spawnSnowClass(snowflakesCount);
 };
