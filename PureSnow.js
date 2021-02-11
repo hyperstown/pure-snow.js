@@ -1,4 +1,4 @@
-let snowflakesCount = 400;
+let snowflakesCount = 200;
 
 if (typeof total !== 'undefined'){
     snowflakesCount = total;
@@ -104,6 +104,13 @@ function spawnSnowCSS(snowDensity = 200){
 
     addCss(rule);
 }
+
+// TODO add progerss bar for slower clients
+
+// Decrease snow density on the fly:
+// var list = document.getElementById("snow");  // this gets a list of all snowflakes
+// list.childElementCount
+// list.removeChild(list.childNodes[0]); put this in a for loop
 
 // Load the rules and execute after the DOM loads
 window.onload = function() {
