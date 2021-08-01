@@ -14,7 +14,7 @@ You can change that by declaring variable `total` eg:
 ```html
 <script>let total = 200;</script>
 ```
-You can also do that by changing `snowflakesCount` inside the script.
+You can also do that by changing `snowflakes_count` inside the script.
 
 
 ### No CSS files whatsoever:
