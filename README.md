@@ -18,10 +18,10 @@ You can also do that by changing `snowflakesCount` inside the script.
 
 
 ### No CSS files whatsoever:
-It is also possible to get rid of style.css file. Just paste it's content to declaration of variable `rule` in line 61 in PureSnow.js file eg:
+It is also possible to get rid of style.css file. Just paste it's content to declaration of variable `base_css` in PureSnow.js file eg:
 
 ```js
-let rule = `
+let base_css = `
     body {
         height: 100vh;
         background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);

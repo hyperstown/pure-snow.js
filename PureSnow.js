@@ -1,26 +1,28 @@
-let snowflakesCount = 200;
+let snowflakes_count = 200;
+
+// let base_css = ``; // Put your custom base css here
 
 if (typeof total !== 'undefined'){
-    snowflakesCount = total;
+    snowflakes_count = total;
 }
 
 
 // This function allows you to turn on and off the snow
-function toggleSnow() {
-    let checkBox = document.getElementById("toggleSnow");
-    if (checkBox.checked == true) {
-        document.getElementById('snow').style.display = "block"
+function toggle_snow() {
+    let check_box = document.getElementById("toggle_snow");
+    if (check_box.checked == true) {
+        document.getElementById('snow').style.display = "block";
     }
     else {
-        document.getElementById('snow').style.display = "none"
+        document.getElementById('snow').style.display = "none";
     }
 }
 
 // Creating snowflakes
-function spawnSnowClass(snowDensity = 200) {
-    snowDensity-= 1;
+function spawn_snow(snow_density = 200) {
+    snow_density -= 1;
 
-    for (let x = 0; x < snowDensity; x++) {
+    for (let x = 0; x < snow_density; x++) {
         let board = document.createElement('div');
         board.className = "snowflake";
 
@@ -29,15 +31,10 @@ function spawnSnowClass(snowDensity = 200) {
 }
 
 // Append style for each snowflake to the head
-function addCss(rule) {
+function add_css(rule) {
     let css = document.createElement('style');
     css.type = 'text/css';
-    if (css.styleSheet) {
-        css.styleSheet.cssText = rule; // Support for IE
-    } 
-    else {
-        css.appendChild(document.createTextNode(rule)); // Support for the rest
-    }
+    css.appendChild(document.createTextNode(rule)); // Support for the rest
     document.getElementsByTagName("head")[0].appendChild(css);
 }
 
@@ -56,33 +53,27 @@ function random_range(min, max) {
 
 
 // Create style for snowflake
-function spawnSnowCSS(snowDensity = 200){
-    let snowflakeName = "snowflake";
-    let rule = ``
-    for(let i = 1; i < snowDensity; i++){
-        let random_x = random_int(1000000) * 0.0001; // vw
-        let random_offset = random_range(-100000, 100000) * 0.0001 // vw;
+function spawnSnowCSS(snow_density = 200){
+    let snowflake_name = "snowflake";
+    let rule = ``;
+    if (typeof base_css !== 'undefined'){
+        rule = base_css;
+    }
+    
+    for(let i = 1; i < snow_density; i++){
+        let random_x = Math.random() * 100; // vw
+        let random_offset = random_range(-100000, 100000) * 0.0001; // vw;
         let random_x_end = random_x + random_offset;
         let random_x_end_yoyo = random_x + (random_offset / 2);
         let random_yoyo_time = random_range(30000, 80000) / 100000;
         let random_yoyo_y = random_yoyo_time * 100; // vh
-        let random_scale = random_int(10000) * 0.0001;
+        let random_scale = Math.random();
         let fall_duration = random_range(10, 30) * 1; // s
         let fall_delay = random_int(30) * -1; // s
-        let opacity_ = random_int(10000) * 0.0001
-
-        // Round values to get rid of floats calculation errors
-        random_x = Math.round((random_x + Number.EPSILON) * 100000) / 100000;
-        random_offset = Math.round((random_offset + Number.EPSILON) * 100000) / 100000;
-        random_x_end = Math.round((random_x_end + Number.EPSILON) * 100000) / 100000;
-        random_yoyo_y = Math.round((random_yoyo_y + Number.EPSILON) * 100000) / 100000;
-        random_x_end_yoyo = Math.round((random_x_end_yoyo + Number.EPSILON) * 100000) / 100000;
-        random_scale = Math.round((random_scale + Number.EPSILON) * 100000) / 100000;
-        opacity_ = Math.round((opacity_ + Number.EPSILON) * 100000) / 100000;
-
+        let opacity_ = Math.random();
 
         rule += `
-        .${snowflakeName}:nth-child(${i}) {
+        .${snowflake_name}:nth-child(${i}) {
             opacity: ${opacity_};
             transform: translate(${random_x}vw, -10px) scale(${random_scale});
             animation: fall-${i} ${fall_duration}s ${fall_delay}s linear infinite;
@@ -99,21 +90,15 @@ function spawnSnowCSS(snowDensity = 200){
             
         }
         `
-        //console.log(rule);
     }
 
-    addCss(rule);
+    add_css(rule);
 }
-
-// TODO add progerss bar for slower clients
-
-// Decrease snow density on the fly:
-// var list = document.getElementById("snow");  // this gets a list of all snowflakes
-// list.childElementCount
-// list.removeChild(list.childNodes[0]); put this in a for loop
 
 // Load the rules and execute after the DOM loads
 window.onload = function() {
-    spawnSnowCSS(snowflakesCount);
-    spawnSnowClass(snowflakesCount);
+    spawnSnowCSS(snowflakes_count);
+    spawn_snow(snowflakes_count);
 };
+
+// TODO add progress bar for slower clients
