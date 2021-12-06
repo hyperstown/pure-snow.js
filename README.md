@@ -23,9 +23,12 @@ It is also possible to get rid of style.css file. Just paste it's content to dec
 ```js
 let baseCss = `
     body {
-        height: 100vh;
         background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-        overflow: hidden;
+        overflow-x: hidden;
+        min-height: 100vh; 
+        /* If you want to change the site height you can remove overflow-y */
+        /* pureSnow will automatically detect height of body tag */
+        overflow-y: hidden;
         color: white;
     }
     
@@ -41,5 +44,16 @@ let baseCss = `
 
 ```
 
+### Page height:
+Keep in mind that increasing page height might impact performance. 
+While increasing page height snowflake count should also be increased.
+
+For example:
+
+Page `height:100vh` ---> `let total = 200`
+
+Page `height:200vh` ---> `let total = 300`
+
+---
 
 Demo: https://hyperstown.github.io/puresnowjs/

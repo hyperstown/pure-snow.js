@@ -6,6 +6,8 @@ if (typeof total !== 'undefined'){
     snowflakesCount = total;
 }
 
+let bodyHeightPx = document.body.offsetHeight;
+let pageHeightVH = (100 * bodyHeightPx / window.innerHeight);
 
 // This function allows you to turn on and off the snow
 function toggleSnow() {
@@ -63,10 +65,10 @@ function spawnSnowCSS(snowDensity = 200){
         let randomXEnd = randomX + randomOffset;
         let randomXEndYoyo = randomX + (randomOffset / 2);
         let randomYoyoTime = randomRange(30000, 80000) / 100000;
-        let randomYoyoY = randomYoyoTime * 100; // vh
+        let randomYoyoY = randomYoyoTime * pageHeightVH; // vh
         let randomScale = Math.random();
-        let fallDuration = randomRange(10, 30) * 1; // s
-        let fallDelay = randomInt(30) * -1; // s
+        let fallDuration = randomRange(10, pageHeightVH / 10 * 3); // s
+        let fallDelay = randomInt(pageHeightVH / 10 * 3) * -1; // s
         let opacity = Math.random();
 
         rule += `
@@ -82,7 +84,7 @@ function spawnSnowCSS(snowDensity = 200){
             }
 
             to {
-                transform: translate(${randomXEndYoyo}vw, 100vh) scale(${randomScale});
+                transform: translate(${randomXEndYoyo}vw, ${pageHeightVH}vh) scale(${randomScale});
             }
             
         }
