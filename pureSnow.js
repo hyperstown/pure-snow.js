@@ -2,7 +2,7 @@ let snowflakesCount = 200;
 
 // let baseCss = ``; // Put your custom base css here
 
-if (typeof total !== 'undefined'){
+if (typeof total !== 'undefined') {
     snowflakesCount = total;
 }
 
@@ -41,33 +41,37 @@ function addCss(rule) {
 }
 
 // Math
-function randomInt(value = 100){
+function randomInt(value = 100) {
     return Math.floor(Math.random() * value) + 1;
 }
 
-function randomRange(min, max) {
+function randomIntRange(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 // Create style for snowflake
-function spawnSnowCSS(snowDensity = 200){
+function spawnSnowCSS(snowDensity = 200) {
     let snowflakeName = "snowflake";
     let rule = ``;
-    if (typeof baseCss !== 'undefined'){
+    if (typeof baseCss !== 'undefined') {
         rule = baseCss;
     }
-    
-    for(let i = 1; i < snowDensity; i++){
+
+    for (let i = 1; i < snowDensity; i++) {
         let randomX = Math.random() * 100; // vw
-        let randomOffset = randomRange(-100000, 100000) * 0.0001; // vw;
+        let randomOffset = Math.random() * 10 // vw;
         let randomXEnd = randomX + randomOffset;
         let randomXEndYoyo = randomX + (randomOffset / 2);
-        let randomYoyoTime = randomRange(30000, 80000) / 100000;
+        let randomYoyoTime = getRandomArbitrary(0.3, 0.8);
         let randomYoyoY = randomYoyoTime * pageHeightVH; // vh
         let randomScale = Math.random();
-        let fallDuration = randomRange(10, pageHeightVH / 10 * 3); // s
+        let fallDuration = randomIntRange(10, pageHeightVH / 10 * 3); // s
         let fallDelay = randomInt(pageHeightVH / 10 * 3) * -1; // s
         let opacity = Math.random();
 
@@ -79,7 +83,7 @@ function spawnSnowCSS(snowDensity = 200){
         }
 
         @keyframes fall-${i} {
-            ${randomYoyoTime*100}% {
+            ${randomYoyoTime * 100}% {
                 transform: translate(${randomXEnd}vw, ${randomYoyoY}vh) scale(${randomScale});
             }
 
@@ -94,7 +98,7 @@ function spawnSnowCSS(snowDensity = 200){
 }
 
 // Load the rules and execute after the DOM loads
-window.onload = function() {
+window.onload = function () {
     spawnSnowCSS(snowflakesCount);
     spawnSnow(snowflakesCount);
 };
