@@ -1,10 +1,10 @@
-# pureSnow.js
+# pure-snow.js
 
 Snow falling slowly on a winter night. Probably the most calming and peaceful snowfall effect written in pure JS/CSS. (No SCSS). 
 
 Inspired by: [alphardex](https://codepen.io/alphardex/pen/dyPorwJ) (SCSS Version) and [YusukeNakaya](https://codepen.io/YusukeNakaya/pen/NWPqvWW) (Vue implementation).
 
-pureSnow.js was created for those who don't want to install any additional libraries and want to change some variables on the fly. \
+pure-snow.js was created for those who don't want to install any additional libraries and want to change some variables on the fly. \
 If you only need the effect I recommend downloading compiled version of [alphardex's](https://codepen.io/alphardex/details/dyPorwJ) work. 
 
 ### Controlling snowfall density:
@@ -18,7 +18,7 @@ You can also do that by changing `snowflakesCount` inside the script.
 
 
 ### No CSS files whatsoever:
-It is also possible to get rid of style.css file. Just paste it's content to declaration of const `BASE_CSS` in pureSnow.js file eg:
+It is also possible to get rid of style.css file. Just paste it's content to declaration of const `BASE_CSS` in pure-snow.js file eg:
 
 ```js
 const BASE_CSS = `
@@ -27,7 +27,7 @@ const BASE_CSS = `
         overflow-x: hidden;
         min-height: 100vh; 
         /* If you want to change the site height you can remove overflow-y */
-        /* pureSnow will automatically detect height of body tag */
+        /* pure-snow will automatically detect height of body tag */
         overflow-y: hidden;
         color: white;
     }
@@ -56,4 +56,4 @@ Page `height:200vh` ---> `total = 300`
 
 ---
 
-Demo: https://hyperstown.github.io/puresnowjs/
+Demo: https://hyperstown.github.io/pure-snowjs/
