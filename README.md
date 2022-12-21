@@ -10,18 +10,18 @@ If you only need the effect I recommend downloading compiled version of [alphard
 ### Controlling snowfall density:
 
 Default amount of snowflakes is set to 400. This might be challenging for an older GPU. \
-You can change that by declaring variable `total` eg:
+You can change that by adding attribute `total` to snow div eg:
 ```html
-<script>let total = 200;</script>
+<div id="snow" total="200"></div>
 ```
 You can also do that by changing `snowflakesCount` inside the script.
 
 
 ### No CSS files whatsoever:
-It is also possible to get rid of style.css file. Just paste it's content to declaration of variable `baseCss` in pureSnow.js file eg:
+It is also possible to get rid of style.css file. Just paste it's content to declaration of const `BASE_CSS` in pureSnow.js file eg:
 
 ```js
-let baseCss = `
+const BASE_CSS = `
     body {
         background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
         overflow-x: hidden;
@@ -50,9 +50,9 @@ While increasing page height snowflake count should also be increased.
 
 For example:
 
-Page `height:100vh` ---> `let total = 200`
+Page `height:100vh` ---> `total = 200`
 
-Page `height:200vh` ---> `let total = 300`
+Page `height:200vh` ---> `total = 300`
 
 ---
 
