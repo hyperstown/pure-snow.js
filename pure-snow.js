@@ -1,10 +1,13 @@
 let snowflakesCount = 200; // Snowflake count, can be overwritten by attrs
-const BASE_CSS = ``; // Put your custom base css here
+let baseCss = ``;
 
 
 // set global attributes
-if (typeof TOTAL_SNOWFLAKES !== 'undefined') {
-    snowflakesCount = TOTAL_SNOWFLAKES;
+if (typeof SNOWFLAKES_COUNT !== 'undefined') {
+    snowflakesCount = SNOWFLAKES_COUNT;
+}
+if (typeof BASE_CSS !== 'undefined'){
+    baseCss = BASE_CSS;
 }
 
 let bodyHeightPx = null;
@@ -73,7 +76,7 @@ function getRandomArbitrary(min, max) {
 // Create style for snowflake
 function spawnSnowCSS(snowDensity = 200) {
     let snowflakeName = "snowflake";
-    let rule = BASE_CSS;
+    let rule = baseCss;
 
     for (let i = 1; i < snowDensity; i++) {
         let randomX = Math.random() * 100; // vw
@@ -110,7 +113,7 @@ function spawnSnowCSS(snowDensity = 200) {
 }
 
 // Load the rules and execute after the DOM loads
-create = function () {
+createSnow = function () {
     setHeightVariables();
     getSnowAttributes();
     spawnSnowCSS(snowflakesCount);
@@ -121,12 +124,12 @@ create = function () {
 // export createSnow function if using node or CommonJS environment
 if (typeof module !== 'undefined') {
     module.exports = {
-        create,
+        createSnow,
         showSnow,
     };
 }
 else {
-    window.onload = create;
+    window.onload = createSnow;
 }
 
 
