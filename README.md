@@ -10,9 +10,9 @@ If you only need the effect I recommend downloading compiled version of [alphard
 ### Controlling snowfall density:
 
 Default amount of snowflakes is set to 400. This might be challenging for an older GPU. \
-You can change that by adding attribute `total` to snow div eg:
+You can change that by adding attribute `count` to snow div eg:
 ```html
-<div id="snow" total="200"></div>
+<div id="snow" count="200"></div>
 ```
 You can also do that by changing `snowflakesCount` inside the script.
 
@@ -50,9 +50,9 @@ While increasing page height snowflake count should also be increased.
 
 For example:
 
-Page `height:100vh` ---> `total = 200`
+Page `height:100vh` ---> `count = 200`
 
-Page `height:200vh` ---> `total = 300`
+Page `height:200vh` ---> `count = 300`
 
 ---
 

@@ -7,23 +7,27 @@ if (typeof TOTAL_SNOWFLAKES !== 'undefined') {
     snowflakesCount = TOTAL_SNOWFLAKES;
 }
 
-const BODY_HEIGHT_PX = document.body.offsetHeight;
-const PAGE_HEIGHT_VH = (100 * BODY_HEIGHT_PX / window.innerHeight);
+let bodyHeightPx = null;
+let pageHeightVh = null;
+
+function setHeightVariables() {
+    bodyHeightPx = document.body.offsetHeight;
+    pageHeightVh = (100 * bodyHeightPx / window.innerHeight);
+}
 
 // get params set in snow div
 function getSnowAttributes() {
     const snowWrapper = document.getElementById('snow');
     if (snowWrapper) {
         snowflakesCount = Number(
-            snowWrapper.attributes?.total?.value || snowflakesCount
+            snowWrapper.attributes?.count?.value || snowflakesCount
         );
     }
 }
 
 // This function allows you to turn on and off the snow
-function toggleSnow() {
-    let checkBox = document.getElementById("toggle-snow");
-    if (checkBox.checked == true) {
+function showSnow(value) {
+    if (value) {
         document.getElementById('snow').style.display = "block";
     }
     else {
@@ -35,7 +39,7 @@ function toggleSnow() {
 function spawnSnow(snowDensity = 200) {
     snowDensity -= 1;
 
-    for (let x = 0; x < snowDensity; x++) {
+    for (let i = 0; i < snowDensity; i++) {
         let board = document.createElement('div');
         board.className = "snowflake";
 
@@ -77,10 +81,10 @@ function spawnSnowCSS(snowDensity = 200) {
         let randomXEnd = randomX + randomOffset;
         let randomXEndYoyo = randomX + (randomOffset / 2);
         let randomYoyoTime = getRandomArbitrary(0.3, 0.8);
-        let randomYoyoY = randomYoyoTime * PAGE_HEIGHT_VH; // vh
+        let randomYoyoY = randomYoyoTime * pageHeightVh; // vh
         let randomScale = Math.random();
-        let fallDuration = randomIntRange(10, PAGE_HEIGHT_VH / 10 * 3); // s
-        let fallDelay = randomInt(PAGE_HEIGHT_VH / 10 * 3) * -1; // s
+        let fallDuration = randomIntRange(10, pageHeightVh / 10 * 3); // s
+        let fallDelay = randomInt(pageHeightVh / 10 * 3) * -1; // s
         let opacity = Math.random();
 
         rule += `
@@ -96,7 +100,7 @@ function spawnSnowCSS(snowDensity = 200) {
             }
 
             to {
-                transform: translate(${randomXEndYoyo}vw, ${PAGE_HEIGHT_VH}vh) scale(${randomScale});
+                transform: translate(${randomXEndYoyo}vw, ${pageHeightVh}vh) scale(${randomScale});
             }
             
         }
@@ -106,10 +110,24 @@ function spawnSnowCSS(snowDensity = 200) {
 }
 
 // Load the rules and execute after the DOM loads
-window.onload = function () {
+create = function () {
+    setHeightVariables();
     getSnowAttributes();
     spawnSnowCSS(snowflakesCount);
     spawnSnow(snowflakesCount);
 };
+
+
+// export createSnow function if using node or CommonJS environment
+if (typeof module !== 'undefined') {
+    module.exports = {
+        create,
+        showSnow,
+    };
+}
+else {
+    window.onload = create;
+}
+
 
 // TODO add progress bar for slower clients
