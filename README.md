@@ -124,7 +124,7 @@ Page `height:200vh` ---> `count = 300`
 
 
 ## Demo: 
-https://hyperstown.github.io/pure-snowjs/
+https://hyperstown.github.io/puresnowjs/
 
 
 ## License
