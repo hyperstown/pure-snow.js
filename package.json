@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hyperstown/puresnowjs.git"
+    "url": "git+https://github.com/hyperstown/pure-snow.js.git"
   },
   "keywords": [
     "snow",
@@ -23,7 +23,7 @@
   "author": "hyperstown",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hyperstown/puresnowjs/issues"
+    "url": "https://github.com/hyperstown/pure-snow.js/issues"
   },
-  "homepage": "https://github.com/hyperstown/puresnowjs#readme"
+  "homepage": "https://github.com/hyperstown/pure-snow.js#readme"
 }
