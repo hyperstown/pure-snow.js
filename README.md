@@ -8,7 +8,7 @@ Inspired by: [alphardex](https://codepen.io/alphardex/pen/dyPorwJ) (SCSS Version
 
 pure-snow.js was created for those who don't want to install any additional libraries and want to easily change parameters. \
 If you only need the effect I can also recommend downloading compiled version of [alphardex's](https://codepen.io/alphardex/details/dyPorwJ) work. 
-It should be render a slightly faster.
+It should be render slightly faster.
 
 
 
