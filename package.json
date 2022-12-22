@@ -1,0 +1,29 @@
+{
+  "name": "pure-snow.js",
+  "version": "2.0.0",
+  "description": "Snow falling slowly on a winter night. Probably the most calming and peaceful snowfall effect written in pure JS/CSS.",
+  "main": "pure-snow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperstown/pure-snow.js.git"
+  },
+  "keywords": [
+    "snow",
+    "snowjs",
+    "puresnowjs",
+    "pure-snow.js",
+    "puresnow.js",
+    "snowflake",
+    "winter",
+    "css"
+  ],
+  "author": "hyperstown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyperstown/pure-snow.js/issues"
+  },
+  "homepage": "https://github.com/hyperstown/pure-snow.js#readme"
+}
