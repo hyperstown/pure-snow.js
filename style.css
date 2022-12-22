@@ -1,18 +1,19 @@
 body {
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    overflow-x: hidden;
-    min-height: 100vh;
-    /* If you want to change the site height you can remove overflow-y */
-    /* pureSnow will automatically detect height of body tag */
-    overflow-y: hidden;
-    color: white;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow-x: hidden;
+  min-height: 100vh;
+  /* If you want to change the site height you can remove overflow-y */
+  /* pureSnow will automatically detect height of body tag */
+  overflow-y: hidden;
+  color: white;
 }
 
 .snowflake {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(white, white); /* Workaround for Chromium's selective color inversion */
-    border-radius: 50%;
-    filter: drop-shadow(0 0 10px white);
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(white, white);
+  /* Workaround for Chromium's selective color inversion */
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px white);
 }

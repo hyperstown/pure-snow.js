@@ -27,7 +27,7 @@ npm install pure-snow.js
 To use the script via a script tag, include the following in head of your HTML file:
 
 ```html
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="/path/to/style.css">
 <script src="/path/to/pure-snow.js" defer></script>
 ```
 
