@@ -43,7 +43,7 @@ generateSnow(); // creates snowflakes and generate css for them
 showSnow(true); // snow can be disabled using showSnow function
 ```
 
-**NOTE: When used via a script tag generateSnow will run after document has been loaded.**
+**NOTE: When used via a script tag, generateSnow will run automatically after document has been loaded.**
 
 Create snow element.
 
