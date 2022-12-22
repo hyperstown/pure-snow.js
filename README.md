@@ -18,7 +18,7 @@ If you only need the effect I recommend downloading compiled version of [alphard
 To install via npm, run the following command in your terminal:
 
 ```bash
-npm install snowflake-generator
+npm install pure-snow.js
 ```
 
 ### Script Tag
