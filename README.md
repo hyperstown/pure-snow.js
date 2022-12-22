@@ -6,8 +6,9 @@ Written in pure JS/CSS. (No SCSS).
 
 Inspired by: [alphardex](https://codepen.io/alphardex/pen/dyPorwJ) (SCSS Version) and [YusukeNakaya](https://codepen.io/YusukeNakaya/pen/NWPqvWW) (Vue implementation).
 
-pure-snow.js was created for those who don't want to install any additional libraries and want to change some variables on the fly. \
-If you only need the effect I recommend downloading compiled version of [alphardex's](https://codepen.io/alphardex/details/dyPorwJ) work. 
+pure-snow.js was created for those who don't want to install any additional libraries and want to easily change parameters. \
+If you only need the effect I can also recommend downloading compiled version of [alphardex's](https://codepen.io/alphardex/details/dyPorwJ) work. 
+It should be render a slightly faster.
 
 
 
@@ -23,15 +24,16 @@ npm install pure-snow.js
 
 ### Script Tag
 
-To use the script via a script tag, include the following in your HTML file:
+To use the script via a script tag, include the following in head of your HTML file:
 
 ```html
-<script src="/path/to/pure-snow.js"></script>
+<link rel="stylesheet" href="./style.css">
+<script src="/path/to/pure-snow.js" defer></script>
 ```
 
-## Usage (Module)
+## Usage
 
-To generate snowflakes, you can use the `generateSnow` function.
+In case you used npm to install the package, generate snowflakes with `generateSnow` function.
 
 ```js
 // import "pure-snow.js/style.css"; // Remember to import style.css
@@ -43,6 +45,11 @@ showSnow(true); // snow can be disabled using showSnow function
 
 **NOTE: When used via a script tag generateSnow will run after document has been loaded.**
 
+Create snow element.
+
+```html
+<div id="snow"></div>
+```
 
 
 ### Controlling snowfall density:
@@ -52,7 +59,6 @@ You can change that by adding attribute `count` to snow div eg:
 ```html
 <div id="snow" count="200"></div>
 ```
-
 
 
 ### No CSS files whatsoever:
