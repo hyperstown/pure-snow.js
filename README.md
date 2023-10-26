@@ -55,7 +55,7 @@ Create snow element.
 ### Controlling snowfall density:
 
 Default amount of snowflakes is set to 200. This might be challenging for an older GPU. \
-You can change that by adding attribute `count` to snow div eg:
+You can change that by adding data attribute `count` to snow div eg:
 ```html
 <div id="snow" data-count="200"></div>
 ```
