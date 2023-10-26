@@ -57,7 +57,7 @@ Create snow element.
 Default amount of snowflakes is set to 200. This might be challenging for an older GPU. \
 You can change that by adding attribute `count` to snow div eg:
 ```html
-<div id="snow" count="200"></div>
+<div id="snow" data-count="200"></div>
 ```
 
 
@@ -104,7 +104,7 @@ Here is a full example of how you might use the `pure-snow.js` in a webpage:
         <!-- Generated snowflake styles will be injected here --> 
     </head>
     <body>
-        <div id="snow" count="200"></div>
+        <div id="snow" data-count="200"></div>
         <!-- Your content goes here --> 
     </body>
 </html>

@@ -1,5 +1,5 @@
 let snowflakesCount = 200; // Snowflake count, can be overwritten by attrs
-let baseCss = ``;
+let baseCSS = ``;
 
 
 // set global attributes
@@ -7,7 +7,7 @@ if (typeof SNOWFLAKES_COUNT !== 'undefined') {
   snowflakesCount = SNOWFLAKES_COUNT;
 }
 if (typeof BASE_CSS !== 'undefined') {
-  baseCss = BASE_CSS;
+  baseCSS = BASE_CSS;
 }
 
 let bodyHeightPx = null;
@@ -21,11 +21,9 @@ function setHeightVariables() {
 // get params set in snow div
 function getSnowAttributes() {
   const snowWrapper = document.getElementById('snow');
-  if (snowWrapper) {
-    snowflakesCount = Number(
-      snowWrapper.attributes?.count?.value || snowflakesCount
-    );
-  }
+  snowflakesCount = Number(
+    snowWrapper?.dataset?.count || snowflakesCount
+  );
 }
 
 // This function allows you to turn on and off the snow
@@ -39,22 +37,32 @@ function showSnow(value) {
 }
 
 // Creating snowflakes
-function spawnSnow(snowDensity = 200) {
+function generateSnow(snowDensity = 200) {
   snowDensity -= 1;
-
+  const snowWrapper = document.getElementById('snow');
+  snowWrapper.innerHTML = '';
   for (let i = 0; i < snowDensity; i++) {
     let board = document.createElement('div');
     board.className = "snowflake";
-
-    document.getElementById('snow').appendChild(board);
+    snowWrapper.appendChild(board);
   }
 }
 
+function getOrCreateCSSElement() {
+  let cssElement = document.getElementById("psjs-css");
+  if (cssElement) return cssElement;
+
+  cssElement = document.createElement('style');
+  cssElement.id = 'psjs-css';
+  document.head.appendChild(cssElement);
+  return cssElement;
+}
+
 // Append style for each snowflake to the head
-function addCss(rule) {
-  let css = document.createElement('style');
-  css.appendChild(document.createTextNode(rule)); // Support for the rest
-  document.getElementsByTagName("head")[0].appendChild(css);
+function addCSS(rule) {
+  const cssElement = getOrCreateCSSElement();
+  cssElement.innerHTML = rule; // safe to use innerHTML
+  document.head.appendChild(cssElement);
 }
 
 // Math
@@ -73,9 +81,9 @@ function getRandomArbitrary(min, max) {
 }
 
 // Create style for snowflake
-function spawnSnowCSS(snowDensity = 200) {
+function generateSnowCSS(snowDensity = 200) {
   let snowflakeName = "snowflake";
-  let rule = baseCss;
+  let rule = baseCSS;
 
   for (let i = 1; i < snowDensity; i++) {
     let randomX = Math.random() * 100; // vw
@@ -105,17 +113,19 @@ function spawnSnowCSS(snowDensity = 200) {
       }
     `
   }
-  addCss(rule);
+  addCSS(rule);
 }
 
 // Load the rules and execute after the DOM loads
-createSnow = function () {
+function createSnow() {
   setHeightVariables();
   getSnowAttributes();
-  spawnSnowCSS(snowflakesCount);
-  spawnSnow(snowflakesCount);
+  generateSnowCSS(snowflakesCount);
+  generateSnow(snowflakesCount);
 };
 
+
+window.addEventListener('resize', createSnow);
 
 // export createSnow function if using node or CommonJS environment
 if (typeof module !== 'undefined') {
@@ -128,6 +138,3 @@ else {
   window.onload = createSnow;
 }
 
-// TODO add option to easily re-render scenery. For example when window resizes.
-// this should be easy as CSS rerenders after display block -> none -> block;
-// TODO add progress bar for slower clients
