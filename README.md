@@ -39,7 +39,7 @@ In case you used npm to install the package, generate snowflakes with `generateS
 // import "pure-snow.js/style.css"; // Remember to import style.css
 import { createSnow, showSnow } from "pure-snow.js";
 
-generateSnow(); // creates snowflakes and generate css for them
+createSnow(); // creates snowflakes and generate css for them
 showSnow(true); // snow can be disabled using showSnow function
 ```
 
